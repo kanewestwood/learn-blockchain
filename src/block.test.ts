@@ -2,7 +2,7 @@ import Block from "./block";
 import { GENESIS_BLOCK } from "./config";
 
 describe("Block", () => {
-  const timestamp = "01/01/01";
+  const timestamp = new Date();
   const data = "data";
   const hash = "hash";
   const lastHash = "lastHash";
@@ -20,6 +20,24 @@ describe("Block", () => {
 
     it("returns genesis data", () => {
       expect(genesisBlock).toEqual(GENESIS_BLOCK);
+    });
+  });
+
+  describe("mineBlock()", () => {
+    const lastBlock = Block.genesis();
+    const data = "mined data";
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+
+    it("should set the last hash to be the hash of the last block", () => {
+      expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+    });
+
+    it("should set block with the data", () => {
+      expect(minedBlock.data).toEqual(data);
+    });
+
+    it("should set timestamp", () => {
+      expect(minedBlock.timestamp).not.toEqual(undefined);
     });
   });
 });

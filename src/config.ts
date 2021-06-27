@@ -1,5 +1,5 @@
 export const GENESIS_BLOCK = {
-  timestamp: "01/01/01",
+  timestamp: new Date(),
   data: "Genesis Data",
   lastHash: "No lastHash",
   hash: "Genesis hash",
