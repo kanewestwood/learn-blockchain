@@ -1,4 +1,5 @@
 import { GENESIS_BLOCK } from "./config";
+import { cryptoHash } from "./crypto-hash";
 
 /**
  * Block class
@@ -59,11 +60,13 @@ class Block {
     lastBlock: Block;
     data: string;
   }): Block {
+    const timestamp = new Date();
+    const lastHash = lastBlock.hash;
     return new this({
-      timestamp: new Date(),
-      lastHash: lastBlock.hash,
+      timestamp,
+      lastHash,
       data,
-      hash: "Todo", // TODO: set up hash
+      hash: cryptoHash(timestamp, lastHash, data),
     });
   }
 }

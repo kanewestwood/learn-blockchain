@@ -1,5 +1,6 @@
 import Block from "./block";
 import { GENESIS_BLOCK } from "./config";
+import { cryptoHash } from "./crypto-hash";
 
 describe("Block", () => {
   const timestamp = new Date();
@@ -38,6 +39,12 @@ describe("Block", () => {
 
     it("should set timestamp", () => {
       expect(minedBlock.timestamp).not.toEqual(undefined);
+    });
+
+    it("should hash data with proper inputs", () => {
+      expect(minedBlock.hash).toEqual(
+        cryptoHash(minedBlock.timestamp, lastBlock.hash, data)
+      );
     });
   });
 });
