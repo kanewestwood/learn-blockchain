@@ -1,6 +1,8 @@
 /**
  * Block class
  */
+import {GENESIS_BLOCK} from "./config";
+
 class Block {
   timestamp: string;
   data: string;
@@ -31,6 +33,15 @@ class Block {
     this.data = data;
     this.hash = hash;
     this.lastHash = lastHash;
+  }
+
+  /**
+   * Method that creates initial block
+   *
+   * @returns {Block} initial block
+   */
+  static genesis(): Block {
+    return new this(GENESIS_BLOCK);
   }
 }
 

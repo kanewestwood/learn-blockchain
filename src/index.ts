@@ -1,4 +1,4 @@
-import Block from "./Block";
+import Block from "./block";
 
 const block = new Block({
   timestamp: "01/01/01",
