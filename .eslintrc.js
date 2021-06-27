@@ -29,6 +29,7 @@ module.exports = {
     "linebreak-style": ["error", "unix"]
   },
   env: {
-    node: true
+    node: true,
+    jest: true
   }
 };
